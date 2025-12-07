@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Teacher Dashboard</h2>
+
+<div>
+    <p>Welcome, {{ request.user.username }}.</p>
+
+    <a class="btn" href="{% url 'students:student_list' %}">Manage Students</a>
+    <a class="btn" href="/admin/">Open Django Admin</a>
+</div>
+{% endblock %}

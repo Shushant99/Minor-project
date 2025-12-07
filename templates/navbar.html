@@ -1,0 +1,9 @@
+<nav class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'accounts:dashboard' %}">Dashboard</a>
+    <a href="{% url 'students:student_list' %}">Students</a>
+    <!-- update the classroom id after creating one -->
+    <a href="{% url 'attendance:start_attendance' 1 %}">Take Attendance</a>
+    <a href="{% url 'attendance:session_report_list' %}">Reports</a>
+
+</nav>
