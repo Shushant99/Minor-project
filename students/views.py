@@ -4,7 +4,7 @@ from .models import Student
 from .forms import StudentForm
 from .encoding_utils import create_and_save_encoding
 from .encoding_utils import create_encodings_for_student
-
+from django.urls import reverse
 @login_required
 def student_list(request):
     students = Student.objects.select_related('classroom').all()
@@ -49,4 +49,14 @@ def student_create(request):
     else:
         form = StudentForm()
     return render(request, 'students/student_form.html', {'form': form})
-    
+@login_required
+def student_delete(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+
+    if request.method == 'POST':
+        # actually delete
+        student.delete()
+        return redirect('students:student_list')
+
+    # show confirmation page
+    return render(request, 'students/student_confirm_delete.html', {'student': student})

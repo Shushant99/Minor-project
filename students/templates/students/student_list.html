@@ -22,6 +22,16 @@
 
         </td>
     </tr>
+    <tr>
+        <td>
+            <a class="btn btn-outline" href="{% url 'students:student_update' student.pk %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'students:student_delete' student.pk %}"
+                onclick="return confirm('Delete {{ student.name }}? This cannot be undone.');">
+                Delete
+            </a>
+        </td>
+
+    </tr>
     {% empty %}
     <tr>
         <td colspan="4">No students yet.</td>
